@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package java;
+package infra;
 
-import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -13,12 +12,12 @@ import javax.persistence.PersistenceContext;
  *
  * @author tim-b
  */
-public class DAO<T> {
+public class DAO {
     
-    @PersistenceContext(unitName = "JPA_unit")
+    @PersistenceContext(unitName = "BankManagerPU")
     private EntityManager em;
     
-    public void create(){
-        
+    public void create(Object entity){
+        em.persist(entity);
     }
 }

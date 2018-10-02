@@ -3,13 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package service;
+package controlleur;
+
+import infra.DAO;
 
 /**
  *
  * @author tim-b
  */
-public class ServiceBankBranch {
- 
+public class Controler {
 
+    private DAO DAOBankBranch;
+    
+    public Controler() {
+        this.DAOBankBranch = new DAO();
+    }
+    
 }
