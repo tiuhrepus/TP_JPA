@@ -12,3 +12,6 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+/JsfJpa/nbproject/private/
+build.xml
+nbproject/
