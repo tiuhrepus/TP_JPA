@@ -18,6 +18,9 @@ public class DAO {
     private EntityManager em;
     
     public void create(Object entity){
+        em.getTransaction().begin();
         em.persist(entity);
+        em.getTransaction();
+        em.close();
     }
 }
