@@ -5,10 +5,31 @@
  */
 package metiers;
 
+import java.io.Serializable;
+import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+
 /**
  *
  * @author tim-b
  */
-public class Client {
+@Entity
+public class Client implements Serializable {
     
+    @Id private int numClient;
+    private String nom;
+    private String prenom;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dateNaissance;
+    
+
+    public int getNumClient() {
+        return numClient;
+    }
+
+    public void setNumClient(int numClient) {
+        this.numClient = numClient;
+    }
 }
