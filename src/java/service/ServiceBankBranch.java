@@ -5,11 +5,14 @@
  */
 package service;
 
+import infra.DAO;
+import metiers.BankBranch;
+
 /**
  *
  * @author tim-b
  */
 public class ServiceBankBranch {
  
-
+    DAO<BankBranch> daoBB = new DAO<>();
 }
