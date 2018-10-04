@@ -12,12 +12,12 @@ import javax.persistence.PersistenceContext;
  *
  * @author tim-b
  */
-public class DAO {
+public class DAO<T> {
     
     @PersistenceContext(unitName = "BankManagerPU")
     private EntityManager em;
     
-    public void create(Object entity){
+    public void create(T entity){
         em.getTransaction().begin();
         em.persist(entity);
         em.getTransaction();
