@@ -5,10 +5,24 @@
  */
 package metiers;
 
+import javax.persistence.JoinColumn;
+
 /**
  *
  * @author tim-b
  */
 public class BankBranch {
+
+    @JoinColumn(nullable = false)
+    private BankBranch bb;
+
+    private String num;
+    private String adresse;
+    
+    public BankBranch(String num, String adresse) {
+        this.num = num;
+        this.adresse = adresse;
+    }
+    
     
 }
