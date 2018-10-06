@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package metiers;
+package UseCases;
+
+import infra.DAO;
+import Domain.BankBranch;
 
 /**
  *
  * @author tim-b
  */
-public class Account {
-    
+public class ServiceBankBranch {
+ 
+    DAO<BankBranch> daoBB = new DAO<>();
 }

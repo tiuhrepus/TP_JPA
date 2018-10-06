@@ -3,26 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package metiers;
+package Domain;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Temporal;
+import javax.persistence.*;
 
-/**
- *
- * @author tim-b
- */
 @Entity
-public class Client implements Serializable {
+public class Client {
     
-    @Id private int numClient;
+    @Id
+    @Column(length = 8)
+    @GeneratedValue
+    private int numClient;
     private String nom;
     private String prenom;
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dateNaissance;
+    
+    
     
 
     public int getNumClient() {
