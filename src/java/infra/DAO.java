@@ -16,6 +16,7 @@ public class DAO<T> {
     
     @PersistenceContext(unitName = "BankManagerPU")
     private EntityManager em;
+    //emf.createEntityManager();
     
     public void create(T entity){
         em.getTransaction().begin();
