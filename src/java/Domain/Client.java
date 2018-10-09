@@ -6,11 +6,12 @@
 package Domain;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.*;
 
 @Entity
-public class Client {
+public class Client implements Serializable {
     
     @Id
     @Column(length = 8)
@@ -20,9 +21,23 @@ public class Client {
     private String prenom;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dateNaissance;
+    @ManyToMany
+    @JoinTable(name = "Account",
+        joinColumns = @JoinColumn(name = "numClient", referencedColumnName = "numClient"),
+        inverseJoinColumns = @JoinColumn(name = "accountNb", referencedColumnName = "accountNb"))
+    private Collection<Account> accounts;
     
+    public Client() {
+        
+    }
     
-    
+    public Client(String nom,
+            String prenom,
+            Date dateNaissance) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.dateNaissance = dateNaissance;
+    }
 
     public int getNumClient() {
         return numClient;
@@ -31,4 +46,38 @@ public class Client {
     public void setNumClient(int numClient) {
         this.numClient = numClient;
     }
+    
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public Date getDateNaissance() {
+        return dateNaissance;
+    }
+
+    public void setDateNaissance(Date dateNaissance) {
+        this.dateNaissance = dateNaissance;
+    }
+
+    public Collection<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(Collection<Account> accounts) {
+        this.accounts = accounts;
+    }
+    
+    
 }
