@@ -5,23 +5,28 @@
  */
 package infra;
 
+import Domain.Client;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 
 /**
  *
  * @author tim-b
  */
-public class DAO<T> {
+public class DAO {
     
-    @PersistenceContext(unitName = "BankManagerPU")
+    //@PersistenceContext(unitName = "BankManagerPU")
     private EntityManager em;
     //emf.createEntityManager();
     
-    public void create(T entity){
-        em.getTransaction().begin();
+    public DAO() {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("BankManagerPU");
+        this.em = emf.createEntityManager();
+    }
+    
+    public void create(Client entity){
         em.persist(entity);
-        em.getTransaction();
-        em.close();
     }
 }

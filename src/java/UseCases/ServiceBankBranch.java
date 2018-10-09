@@ -14,5 +14,5 @@ import Domain.BankBranch;
  */
 public class ServiceBankBranch {
  
-    DAO<BankBranch> daoBB = new DAO<>();
+    DAO daoBB = new DAO();
 }
