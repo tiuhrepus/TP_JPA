@@ -15,10 +15,8 @@ import javax.persistence.Persistence;
  * @author tim-b
  */
 public class DAO {
-    
-    //@PersistenceContext(unitName = "BankManagerPU")
+
     private EntityManager em;
-    //emf.createEntityManager();
     
     public DAO() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("BankManagerPU");
