@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package java.infra;
+package infra;
 
 import Domain.Client;
 import infra.DAO;
@@ -20,17 +20,27 @@ import org.junit.BeforeClass;
  * @author etienne
  */
 public class DAOTest extends TestCase {
+    
+    private Context  ctx;
+    private EJBContainer ejbContainer;
+    
     @BeforeClass
     public  void setUp() {
+        ejbContainer = EJBContainer.createEJBContainer();
+        System.out.println("Opening the container" );
+        ctx = ejbContainer.getContext();
     }
 
     @AfterClass
     public  void tearDown() {
+        ejbContainer.close();
+        System.out.println("Closing the container" );
     }
 
     public void testApp() throws NamingException {
-
-        DAO dao = new DAO();
+        
+        DAO dao = (DAO) ctx.lookup("java:app/bank_datasource");
+        assertNotNull(dao);
         
         Client client = new Client("Yo", "Lo", new Date(114, 11, 30));
         dao.create(client);
