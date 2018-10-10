@@ -6,6 +6,7 @@
 package Domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.*;
@@ -22,13 +23,13 @@ public class Client implements Serializable {
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dateNaissance;
     @ManyToMany
-    @JoinTable(name = "Account",
+    @JoinTable(name = "Account_client",
         joinColumns = @JoinColumn(name = "numClient", referencedColumnName = "numClient"),
         inverseJoinColumns = @JoinColumn(name = "accountNb", referencedColumnName = "accountNb"))
     private Collection<Account> accounts;
     
     public Client() {
-        
+        this.accounts = new ArrayList<>();
     }
     
     public Client(String nom,
@@ -37,6 +38,7 @@ public class Client implements Serializable {
         this.nom = nom;
         this.prenom = prenom;
         this.dateNaissance = dateNaissance;
+        this.accounts = new ArrayList<>();
     }
 
     public int getNumClient() {

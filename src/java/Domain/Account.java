@@ -16,7 +16,7 @@ public class Account implements Serializable {
     private String label;
     @Column(scale = 2)
     private int balance;
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "numAgency", nullable = false)
     private BankBranch bankBranch;
     @ManyToMany(mappedBy = "accounts")

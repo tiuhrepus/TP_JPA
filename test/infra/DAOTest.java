@@ -45,8 +45,9 @@ public class DAOTest {
     @Test
     public void testCreate() {
         System.out.println("create");
-        DAO instance = new DAO();
-        instance.create(new Client("Thimothée", "Borelle", new Date(2014, 11, 25)));
+        
+        DAO dao = new DAO();
+        dao.create(new Client("Thimothée", "Borelle", new Date(2014, 11, 25)));
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
