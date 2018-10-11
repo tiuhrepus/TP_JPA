@@ -20,16 +20,17 @@ public class Client implements Serializable {
     private int numClient;
     private String nom;
     private String prenom;
+    
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dateNaissance;
+    
     @ManyToMany
-    @JoinTable(name = "Account_client",
-        joinColumns = @JoinColumn(name = "numClient", referencedColumnName = "numClient"),
-        inverseJoinColumns = @JoinColumn(name = "accountNb", referencedColumnName = "accountNb"))
+    @JoinTable(name = "ACCOUNT_CLIENT",
+        joinColumns = @JoinColumn(name = "CLIENTNB", referencedColumnName = "NUMCLIENT"),
+        inverseJoinColumns = @JoinColumn(name = "ACCOUNTNB", referencedColumnName = "ACCOUNTNB"))
     private Collection<Account> accounts;
     
     public Client() {
-        this.accounts = new ArrayList<>();
     }
     
     public Client(String nom,
