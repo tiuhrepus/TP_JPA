@@ -15,15 +15,27 @@ import java.util.Date;
  */
 public class ServiceClient {
     
-    DAO dao;
+    DAO<Client> daoClient;
     
     public ServiceClient() {
-        dao = new DAO();
+        daoClient = new DAO();
     }
     
     public void createClient(String surname, String firstname, Date date) {
         Client client = new Client(surname, firstname, date);
-        dao.create(client);
+        daoClient.create(client);
+    }
+    
+    public void deleteClient(Client client) {
+        daoClient.remove(client);
+    }
+    
+    public void saveClient(Client client) {
+        daoClient.update(client);
+    }
+    
+    public Client getClient(int numClient) {
+        return daoClient.get(Client.class, numClient);
     }
     
 }

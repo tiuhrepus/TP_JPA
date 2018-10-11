@@ -46,11 +46,7 @@ public class MainControler extends HttpServlet {
             servBB.createBankBranch("1 rue de Provence 75012 Paris");
             
             ServiceClient servClient = new ServiceClient();
-            try {
-                servClient.createClient("Thimotée", "Borelle", new SimpleDateFormat().parse("25/10/2012"));
-            } catch (ParseException ex) {
-                Logger.getLogger(MainControler.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            servClient.createClient("Thimotée", "Borelle", new Date("25/10/2012"));
             
             
             /* TODO output your page here. You may use following sample code. */

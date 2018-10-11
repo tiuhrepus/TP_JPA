@@ -15,15 +15,27 @@ import Domain.BankBranch;
 public class ServiceBankBranch {
  
         
-    DAO dao;
+    DAO<BankBranch> daoBankBranch;
     
     public ServiceBankBranch() {
-        dao = new DAO();
+        daoBankBranch = new DAO();
     }
     
     public void createBankBranch(String address) {
         BankBranch bankBranch = new BankBranch(address);
-        dao.create(bankBranch);
+        daoBankBranch.create(bankBranch);
+    }
+    
+    public void deleteBankBranch(BankBranch bankBranch) {
+        daoBankBranch.remove(bankBranch);
+    }
+    
+    public void saveBankBranch(BankBranch bankBranch) {
+        daoBankBranch.update(bankBranch);
+    }
+    
+    public BankBranch getBankBranch(String numAgency) {
+        return daoBankBranch.get(BankBranch.class, numAgency);
     }
     
 }

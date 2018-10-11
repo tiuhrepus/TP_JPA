@@ -5,10 +5,34 @@
  */
 package Services;
 
-/**
- *
- * @author etienne
- */
+import Domain.Account;
+import Domain.BankBranch;
+import Domain.Client;
+import infra.DAO;
+
 public class ServiceAccount {
+    
+        DAO<Account> daoAccount;
+    
+    public ServiceAccount() {
+        daoAccount = new DAO();
+    }
+    
+    public void createAccount(String label, String iban, BankBranch bankBranch, Client client) {
+        Account account = new Account(label,iban, bankBranch, client);
+        daoAccount.create(account);
+    }
+    
+    public void deleteAccount(Account account) {
+        daoAccount.remove(account);
+    }
+    
+    public void saveAccount(Account account) {
+        daoAccount.update(account);
+    }
+    
+    public Account getAccount(String accountNb) {
+        return daoAccount.get(Account.class, accountNb);
+    }
     
 }

@@ -1,6 +1,7 @@
 package Domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.*;
 
@@ -30,6 +31,7 @@ public class Account implements Serializable {
         this.iban = iban;
         this.balance = 0;
         this.bankBranch = bankBranch;
+        this.clients = new ArrayList<>();
         this.clients.add(client);
     }
 
