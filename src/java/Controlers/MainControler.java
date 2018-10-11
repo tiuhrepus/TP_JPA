@@ -5,16 +5,7 @@
  */
 package Controlers;
 
-import Services.ServiceAccount;
-import Services.ServiceBankBranch;
-import Services.ServiceClient;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,27 +30,8 @@ public class MainControler extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            
-            ServiceBankBranch servBB = new ServiceBankBranch();
-            servBB.createBankBranch("1 rue de Provence 75012 Paris");
-            
-            ServiceClient servClient = new ServiceClient();
-            servClient.createClient("Thimotée", "Borelle", new Date("25/10/2012"));
-            
-            
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet MainControler</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet MainControler at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        this.getServletContext().getRequestDispatcher( "/WEB-INF/index.jsp" ).forward( request, response );
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
