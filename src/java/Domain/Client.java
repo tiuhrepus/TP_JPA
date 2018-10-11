@@ -23,7 +23,7 @@ public class Client implements Serializable {
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dateNaissance;
     @ManyToMany
-    @JoinTable(name = "Account_client",
+    @JoinTable(name = "ACCOUNT_CLIENT",
         joinColumns = @JoinColumn(name = "numClient", referencedColumnName = "numClient"),
         inverseJoinColumns = @JoinColumn(name = "accountNb", referencedColumnName = "accountNb"))
     private Collection<Account> accounts;

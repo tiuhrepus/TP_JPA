@@ -5,8 +5,16 @@
  */
 package Controlers;
 
+import Services.ServiceAccount;
+import Services.ServiceBankBranch;
+import Services.ServiceClient;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,6 +41,18 @@ public class MainControler extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            
+            ServiceBankBranch servBB = new ServiceBankBranch();
+            servBB.createBankBranch("1 rue de Provence 75012 Paris");
+            
+            ServiceClient servClient = new ServiceClient();
+            try {
+                servClient.createClient("Thimotée", "Borelle", new SimpleDateFormat().parse("25/10/2012"));
+            } catch (ParseException ex) {
+                Logger.getLogger(MainControler.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");

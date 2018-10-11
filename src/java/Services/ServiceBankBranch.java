@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UseCases;
+package Services;
 
 import infra.DAO;
 import Domain.BankBranch;
@@ -14,5 +14,16 @@ import Domain.BankBranch;
  */
 public class ServiceBankBranch {
  
-    DAO daoBB = new DAO();
+        
+    DAO dao;
+    
+    public ServiceBankBranch() {
+        dao = new DAO();
+    }
+    
+    public void createBankBranch(String address) {
+        BankBranch bankBranch = new BankBranch(address);
+        dao.create(bankBranch);
+    }
+    
 }
