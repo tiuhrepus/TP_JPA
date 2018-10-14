@@ -58,8 +58,7 @@ public class BankWS {
     @WebMethod(operationName = "getAllClients")
     public List<Client> getAllClients(){
         ServiceClient sc = new ServiceClient();
-        //implémenter getAllClients
-        return (List<Client>)sc.getAllClients(new Client());
+        return (List<Client>)sc.getAllClients();
     }
     
     /**
