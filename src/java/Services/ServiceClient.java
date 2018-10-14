@@ -8,6 +8,7 @@ package Services;
 import Domain.Client;
 import infra.DAO;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -37,5 +38,12 @@ public class ServiceClient {
     public Client getClient(int numClient) {
         return daoClient.get(Client.class, numClient);
     }
-    
+ 
+    /**
+     *
+     * @return liste de tous les clients
+     */
+    public List<Client> getAllClients(){
+        return (List<Client>)daoClient.findAllTuples(new Client());
+    }
 }
