@@ -5,10 +5,15 @@
  */
 package Web_Services;
 
+import Domain.Account;
 import Domain.BankBranch;
 import Domain.Client;
+import Services.ServiceAccount;
+import Services.ServiceBankBranch;
+import Services.ServiceClient;
 import infra.DAO;
 import java.util.Date;
+import java.util.List;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -36,14 +41,13 @@ public class BankWS {
     /**
      * méthode prend en paramètre l'identifiant d'un client et nous retourne un 
      * message SOAP contenant le client. 
-     * @param txt
-     * @return 
+     * @param idClient : numéro de client
+     * @return Client : un client
     */
     @WebMethod(operationName = "findClientsById")
-    public Object findClientById(@WebParam(name = "idClient") String txt){
-        
-        Object client;
-        return "(infos client)";
+    public Client findClientById(@WebParam(name = "idClient") String idClient){
+        ServiceClient sc = new ServiceClient();
+        return (Client)sc.getClient(Integer.parseInt(idClient));
     }
     
     /**
@@ -52,33 +56,22 @@ public class BankWS {
      * @return la liste de tous les clients
     */
     @WebMethod(operationName = "getAllClients")
-    public Object getAllClients(){
-        Object clients = null;
-       
-        try {
-            JAXBContext context = JAXBContext.newInstance(Client.class);
-            Marshaller m = context.createMarshaller();
-            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            //Personne p = new Personne("nom1", "prenom1", 175, new Date());
-            Client clt = new Client("nom", "prenom", new Date());
-            m.marshal(clt, System.out);
-        } catch (JAXBException ex) {
-            ex.printStackTrace();
-        }
-        
-        return clients;
+    public List<Client> getAllClients(){
+        ServiceClient sc = new ServiceClient();
+        //implémenter getAllClients
+        return (List<Client>)sc.getAllClients(new Client());
     }
     
     /**
      * Cette méthode prend en paramètre le numéro et le l'adresse d'une agence, 
      * et la persiste en base de données.
      * @param numAgency : le numéro d'agence
-     * @param adress : le numéro d'adresse de l'agence
+     * @param adressAgency : adresse de l'agence
     */
     @WebMethod(operationName = "createBankBranch")
-    public void createBankBranch(@WebParam(name = "num agence") String numAgency, @WebParam(name = "adresse agence") String adress){
-        DAO<BankBranch> daoBB = new DAO<>();
-        DAO<BankBranch> daobb2 = new DAO<>();
+    public void createBankBranch(@WebParam(name = "numAgency") String numAgency, @WebParam(name = "adressAgency") String adressAgency){
+        ServiceBankBranch sbb = new ServiceBankBranch();
+        sbb.createBankBranch(adressAgency);
     }
     
     /**
@@ -86,7 +79,8 @@ public class BankWS {
      * @param accountNb : numéro de compte
     */
     @WebMethod(operationName = "deleteAccount")
-    public void deleteAccount(@WebParam(name = "num account") String accountNb){
-        
+    public void deleteAccount(@WebParam(name = "accountNb") String accountNb){
+        ServiceAccount sa = new ServiceAccount();
+        sa.deleteAccount((Account)sa.getAccount(accountNb));
     }
 }
