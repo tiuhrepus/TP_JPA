@@ -5,6 +5,7 @@
  */
 package infra;
 
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -48,6 +49,18 @@ public class DAO<T> {
         em.getTransaction().begin();
         em.persist(entity);
         em.getTransaction().commit();
+    }
+
+    /**
+     * Méthode qui permet de récupérer tous les 
+     * tuples d'une table
+     * @param entity : nom de la table qui contient les tuples à récupérer
+     * @return : liste de tous les tuples contenus dans la table
+     */
+
+    public  List<T> findAllTuples(T entity){
+        List result =  em.createQuery(String.format("SELECT t FROM %s t", entity.getClass().getName()),entity.getClass()).getResultList();
+        return result;
     }
     
 }
