@@ -1,4 +1,6 @@
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -28,5 +30,17 @@
             </div>	
             <button id="submitButton" type="submit" class="btn btn-primary mb-2">Créer compte client</button>
         </form>
+            
+        <div>
+            <h2>Liste des clients</h2>
+            <c:forEach items="${clients}" var="client">
+                <tr>
+                    <td>Client ID: <c:out value="${client.getNumClient()}"/></td>
+                    <td>Client Name: <c:out value="${client.getNom()}"/></td> 
+                    <td>Client Firstname: <c:out value="${client.getPrenom()}"/></td>
+                </tr>
+                <br/>
+            </c:forEach>
+        </div>
     </body>
 </html>

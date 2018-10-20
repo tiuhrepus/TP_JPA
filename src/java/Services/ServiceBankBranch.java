@@ -7,6 +7,7 @@ package Services;
 
 import infra.DAO;
 import Domain.BankBranch;
+import java.util.List;
 
 /**
  *
@@ -36,6 +37,10 @@ public class ServiceBankBranch {
     
     public BankBranch getBankBranch(String numAgency) {
         return daoBankBranch.get(BankBranch.class, numAgency);
+    }
+    
+    public List<BankBranch> getAllBankBranch(){
+        return (List<BankBranch>)daoBankBranch.findAllTuples(BankBranch.class);
     }
     
 }
