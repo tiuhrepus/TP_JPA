@@ -44,6 +44,6 @@ public class ServiceClient {
      * @return liste de tous les clients
      */
     public List<Client> getAllClients(){
-        return (List<Client>)daoClient.findAllTuples(new Client());
+        return (List<Client>)daoClient.findAllTuples(Client.class);
     }
 }

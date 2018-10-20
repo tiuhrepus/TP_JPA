@@ -1,10 +1,3 @@
-### Intellij ###
-.idea/
-out/
-*.iml
-modules.xml
-*.ipr
-
 ### NetBeans ###
 nbproject/private/
 build/
@@ -12,6 +5,3 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
-/JsfJpa/nbproject/private/
-build.xml
-nbproject/

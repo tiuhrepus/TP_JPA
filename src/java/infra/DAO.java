@@ -57,9 +57,8 @@ public class DAO<T> {
      * @param entity : nom de la table qui contient les tuples à récupérer
      * @return : liste de tous les tuples contenus dans la table
      */
-
-    public  List<T> findAllTuples(T entity){
-        List result =  em.createQuery(String.format("SELECT t FROM %s t", entity.getClass().getName()),entity.getClass()).getResultList();
+    public  List<T> findAllTuples(Class<T> entityClass){
+        List result =  em.createQuery(String.format("SELECT t FROM %s t", entityClass.getName()),entityClass).getResultList();
         return result;
     }
     
