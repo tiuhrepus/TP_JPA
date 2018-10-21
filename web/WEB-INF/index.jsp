@@ -16,7 +16,7 @@
             <br/>
             <a href="${pageContext.request.contextPath}/agencyCreation">Création d'agences</a>
             <br/>
-            <a href="${pageContext.request.contextPath}/accountCreation">Création de comptes</a>
+            <a href="${pageContext.request.contextPath}/accountManagement">Création de comptes</a>
         </div>
     </body>
     
