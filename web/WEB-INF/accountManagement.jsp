@@ -31,17 +31,18 @@
                 </div>
                 <div class="form-group col-md-8">
                     <label for="inputNumClient2">Num Client 2</label>
-                    <select name="inputNumClient2" size="1" required>
+                    <select name="inputNumClient2" size="1">
+                        <option disabled selected value> Optionnel </option>
                         <c:forEach items="${clients}" var="client">
                             <option><c:out value="${client.getNumClient()}"/></option>
                         </c:forEach>
                     </select>
                 </div>
                 <div class="form-group col-md-8">
-                    <label for="inputNumClient1">Num Agency*</label>
-                    <select name="inputNumClient1" size="1" required>
-                        <c:forEach items="${agencies}" var="client">
-                            <option><c:out value="${agencie.getNumAgency()}"/></option>
+                    <label for="inputNumAgency">Num Agency*</label>
+                    <select name="inputNumAgency" size="1" required>
+                        <c:forEach items="${agences}" var="agence">
+                            <option><c:out value="${agence.getNumAgency()}"/></option>
                         </c:forEach>
                     </select>
                 </div>                
@@ -51,7 +52,7 @@
             
         <div>
             <h2>Liste des comptes</h2>
-            <c:forEach items="${comptes}" var="compte">
+            <c:forEach items="${accounts}" var="compte">
                 <tr>
                     <td>Number: <c:out value="${compte.getAccountNb()}"/></td>
                     <td>Iban: <c:out value="${compte.getIban()}"/></td> 
@@ -61,6 +62,12 @@
                         <td>Client: <c:out value="${client.getPrenom()}"/></td>
                         <td><c:out value="${client.getNom()}"/></td> 
                     </c:forEach>
+                    <td>
+                        <form method="get" action="${pageContext.request.contextPath}/accountManagement">
+                            <input type="hidden" name="inputAccountNb" value="${compte.getAccountNb()}"/>
+                            <button id="submitButton" type="submit">Delete</button>
+                        </form>
+                    </td>
                 </tr>
                 <br/>
             </c:forEach>

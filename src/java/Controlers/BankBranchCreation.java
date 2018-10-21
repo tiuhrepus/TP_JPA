@@ -28,7 +28,6 @@ public class BankBranchCreation extends HttpServlet {
             throws ServletException, IOException {
 
         List<BankBranch> agences = serviceBankBranch.getAllBankBranch();
-        
         request.setAttribute("agences", agences);
         
         this.getServletContext().getRequestDispatcher( VUE ).forward(request,response);
@@ -45,15 +44,8 @@ public class BankBranchCreation extends HttpServlet {
             throws ServletException, IOException {
         String address = (String) request.getParameter(ATT_ADDRESS);
 
-        try {
-            int numAgency = Integer.parseInt(request.getParameter(ATT_NUMAGENCY));
-
-            if (!address.isEmpty()) {
-                serviceBankBranch.createBankBranch(address, numAgency);
-            }
-        } catch (Exception e) {
-            
-        }
+        String numAgency = request.getParameter(ATT_NUMAGENCY);
+        serviceBankBranch.createBankBranch(address, numAgency);
         
         processRequest(request, response);
     }

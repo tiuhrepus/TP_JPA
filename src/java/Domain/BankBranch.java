@@ -7,33 +7,24 @@ import javax.persistence.*;
 public class BankBranch implements Serializable {
 
     @Id
-    @GeneratedValue
     @Column(length = 5)
-    private String idAgency;
+    private String numAgency;
     private String address;
-    private int numAgency;
+
     
     public BankBranch() { }
     
-    public BankBranch(String address, int numAgency) {
+    public BankBranch(String address, String numAgency) {
         this.address = address;
         this.numAgency = numAgency;
     }
 
-    public int getNumAgency() {
+    public String getNumAgency() {
         return numAgency;
     }
 
-    public void setNumAgency(int num) {
+    public void setNumAgency(String num) {
         this.numAgency = num;
-    }
-    
-    public String getIdAgency() {
-        return idAgency;
-    }
-
-    public void setIdAgency(String id) {
-        this.idAgency = id;
     }
 
     public String getAddress() {

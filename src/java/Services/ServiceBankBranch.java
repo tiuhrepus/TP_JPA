@@ -22,7 +22,7 @@ public class ServiceBankBranch {
         daoBankBranch = new DAO();
     }
     
-    public void createBankBranch(String address, int numAgency) {
+    public void createBankBranch(String address, String numAgency) {
         BankBranch bankBranch = new BankBranch(address, numAgency);
         daoBankBranch.create(bankBranch);
     }

@@ -68,7 +68,7 @@ public class BankWS {
      * @param adressAgency : adresse de l'agence
     */
     @WebMethod(operationName = "createBankBranch")
-    public void createBankBranch(@WebParam(name = "numAgency") int numAgency, @WebParam(name = "adressAgency") String adressAgency){
+    public void createBankBranch(@WebParam(name = "numAgency") String numAgency, @WebParam(name = "adressAgency") String adressAgency){
         ServiceBankBranch sbb = new ServiceBankBranch();
         sbb.createBankBranch(adressAgency, numAgency);
     }

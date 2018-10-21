@@ -12,7 +12,6 @@ public class Account implements Serializable {
     @Column(length = 11)
     @GeneratedValue
     private String accountNb;
-    @Column(length = 27, unique = true)
     private String iban;
     private String label;
     @Column(scale = 2)
@@ -26,13 +25,12 @@ public class Account implements Serializable {
     public Account() {
     }
     
-    public Account(String label, String iban, BankBranch bankBranch, Client client) {
+    public Account(String label, String iban, BankBranch bankBranch, ArrayList<Client> clients) {
         this.label = label;
         this.iban = iban;
         this.balance = 0;
         this.bankBranch = bankBranch;
-        this.clients = new ArrayList<>();
-        this.clients.add(client);
+        this.clients = clients;
     }
 
     public String getAccountNb() {
