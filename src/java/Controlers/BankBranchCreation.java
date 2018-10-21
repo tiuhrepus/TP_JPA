@@ -16,6 +16,7 @@ public class BankBranchCreation extends HttpServlet {
     
     private final String VUE = "/WEB-INF/agencyCreation.jsp";
     private final String ATT_ADDRESS = "inputAddress";
+    private final String ATT_NUMAGENCY = "inputNumAgency";
     
     private ServiceBankBranch serviceBankBranch;
     
@@ -42,11 +43,16 @@ public class BankBranchCreation extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        String address = request.getParameter(ATT_ADDRESS);
-        
-        if (!address.isEmpty()) {
-            serviceBankBranch.createBankBranch(address);
+        String address = (String) request.getParameter(ATT_ADDRESS);
+
+        try {
+            int numAgency = Integer.parseInt(request.getParameter(ATT_NUMAGENCY));
+
+            if (!address.isEmpty()) {
+                serviceBankBranch.createBankBranch(address, numAgency);
+            }
+        } catch (Exception e) {
+            
         }
         
         processRequest(request, response);

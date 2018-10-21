@@ -17,6 +17,10 @@
                     <label for="inputAddress">Adresse</label>
                     <input type="text" class="form-control" name="inputAddress" required>
                 </div>
+                <div class="form-group col-md-8">
+                    <label for="inputNumAgency">Numéro d'agence</label>
+                    <input type="number" class="form-control" name="inputNumAgency" required>
+                </div>
             </div>	
             <button id="submitButton" type="submit" class="btn btn-primary mb-2">Créer agence</button>
         </form>
@@ -25,12 +29,14 @@
             <h2>Liste des agences</h2>
             <c:forEach items="${agences}" var="agence">
                 <tr>
-                    <td>Agency ID: <c:out value="${agence.getNumAgency()}"/></td>
+                    <td>Agency number: <c:out value="${agence.getNumAgency()}"/></td>
                     <td>Agency address: <c:out value="${agence.getAddress()}"/></td> 
                 </tr>
                 <br/>
             </c:forEach>
         </div>
+        <br/>
+        <a href="${pageContext.request.contextPath}">Accueil</a>
     </body>
 </html>
 

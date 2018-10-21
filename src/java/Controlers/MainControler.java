@@ -14,8 +14,6 @@ public class MainControler extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         this.getServletContext().getRequestDispatcher( "/WEB-INF/index.jsp" ).forward( request, response );
-        
-        
     }
   
     @Override

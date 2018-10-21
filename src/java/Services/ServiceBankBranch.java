@@ -22,8 +22,8 @@ public class ServiceBankBranch {
         daoBankBranch = new DAO();
     }
     
-    public void createBankBranch(String address) {
-        BankBranch bankBranch = new BankBranch(address);
+    public void createBankBranch(String address, int numAgency) {
+        BankBranch bankBranch = new BankBranch(address, numAgency);
         daoBankBranch.create(bankBranch);
     }
     

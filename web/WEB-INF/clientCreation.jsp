@@ -42,5 +42,8 @@
                 <br/>
             </c:forEach>
         </div>
+            
+        <br/>
+        <a href="${pageContext.request.contextPath}">Accueil</a>
     </body>
 </html>

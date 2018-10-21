@@ -51,9 +51,9 @@ public class ClientCreation extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String surname = request.getParameter(ATT_SURNAME);
-        String firstname = request.getParameter(ATT_FIRSTNAME);
-        String dateStr = request.getParameter(ATT_DATE);
+        String surname = (String) request.getParameter(ATT_SURNAME);
+        String firstname = (String) request.getParameter(ATT_FIRSTNAME);
+        String dateStr = (String) request.getParameter(ATT_DATE);
         
         if (surname.isEmpty() || firstname.isEmpty() || dateStr.isEmpty()) {
             request.setAttribute("erreur", "wrong inputs");
